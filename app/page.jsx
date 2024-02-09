@@ -3,6 +3,7 @@
 //motion and styled
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { pageAnimation } from "./animation";
 
 import { useRouter } from "next/navigation"
 
@@ -16,7 +17,12 @@ export default function Home() {
    //routing
    const router = useRouter()
   return (
-    <>
+    <motion.div
+    key={'home'}
+    variants={pageAnimation}
+    initial="hidden"
+    animate="show"
+    exit="exit">
 <Nav/>
 <StyledMain>
   <div className="hero">
@@ -32,7 +38,7 @@ export default function Home() {
   </div>
   
 </StyledMain>
-    </>
+    </motion.div>
   );
 }
 

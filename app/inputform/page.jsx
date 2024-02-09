@@ -3,6 +3,7 @@
 //motion and styled
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { pageAnimation } from "../animation";
 
 import { useRouter } from "next/navigation"
 
@@ -23,7 +24,12 @@ export default function InputForm() {
      //routing
    const router = useRouter()
   return (
-    <>
+    <motion.div
+    key={'inputform'}
+    variants={pageAnimation}
+    initial="hidden"
+    animate="show"
+    exit="exit">
 <Nav/>
 <StyledForm>
 <div className="hero-img">
@@ -43,7 +49,7 @@ export default function InputForm() {
   </button>
   </form>
 </StyledForm>
-    </>
+    </motion.div>
   );
 }
 

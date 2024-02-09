@@ -1,8 +1,5 @@
-import { Inter } from "next/font/google";
-import StyledComponentsRegistry from "./library/registry";
-import GlobalStyles from "./GlobalStyles";
 
-
+import ClientLayout from "./clientlayout";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,13 +8,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body>
-        <StyledComponentsRegistry>
-          <GlobalStyles/>
-            {children}
-        </StyledComponentsRegistry>
-      </body>
-    </html>
+  <ClientLayout children={children}/>
   );
 }
