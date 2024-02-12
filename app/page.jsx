@@ -97,4 +97,75 @@ const StyledMain = styled(motion.main)`
   }
 }
 
+
+
+@media (max-width: 576px){
+  flex-direction: column-reverse;
+  padding: 66px 0;
+  height: auto;
+  justify-content: center;
+  gap: 37px;
+
+  .hero{
+    width: 90%;
+    align-items: center;
+    text-align: center;
+    gap: 37px;
+    h2{
+      font-size: 25px;
+     
+    }
+    p{
+      font-size: 16px;
+    }
+    button{
+      
+      height: 55px !important;
+      width: 60%;
+      padding: 0 5px;
+
+      span,.icon{
+        font-size: 20px;
+      }
+    }
+  }
+
+  .hero-img{
+    width: 80%;
+    height: 284px;
+
+    &:hover{
+      width: 90%;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+height: auto;
+
+.hero{
+ justify-content: center;
+ gap: 20px;
+    h2{
+      font-size: 25px;
+     
+    }
+    p{
+      font-size: 16px;
+    }
+
+    button{
+      
+      height: 55px !important;
+
+      span,.icon{
+        font-size: 20px;
+      }
+    }
+  }
+
+  .hero-img{
+    height: 400px;
+  }
+}
 ` 

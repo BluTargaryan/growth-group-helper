@@ -44,4 +44,17 @@ z-index: 10;
         width: 50px;
     }
 }
+
+@media (max-width: 425px){
+    height:68px ;
+
+    .logo{
+        height: 45px;
+        width: 45px;
+
+        img{
+            width: 40px;
+        }
+    }
+}
 `
