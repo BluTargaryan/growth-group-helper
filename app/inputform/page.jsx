@@ -33,7 +33,7 @@ export default function InputForm() {
 <Nav/>
 <StyledForm>
 <div className="hero-img">
-  <img src='https://images.unsplash.com/photo-1565813086292-604790c8a97b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='fellowship image'/>
+  <img src='https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'/>
   </div>
   <form className="hero" onSubmit={routeToVenue}>
    <h3>Please put in your names and postcode so we can help you find the nearest growth group</h3>
@@ -126,5 +126,118 @@ const StyledForm = styled(motion.main)`
       align-items: center;
 
     }
+  }
+
+  @media (max-width: 576px){
+    padding: 32px 0;
+    flex-direction: column;
+    height: auto;
+    gap: 37px;
+
+    .hero-img{
+      width: 85%;
+      height: 284px;
+
+    &:hover{
+      width: 90%;
+    }
+    }
+
+    .hero{
+      height: auto;
+    width: 90%;
+    align-items: center;
+    justify-content: start;
+    gap: 37px;
+    text-align: center;
+
+      h3{
+      font-size: 20px;
+    }
+    .form-inputs{
+
+      input{
+        width: 100%;
+        padding-left: 0px;
+        font-size: 16px;
+        text-align: center;
+      }
+      
+    }
+    button{
+      height: 55px !important;
+      width: 60%;
+      padding: 0 5px;
+
+      span,.icon{
+        font-size: 20px;
+      }
+    }
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 1200px){
+    .hero-img{
+      width: 40%;
+      height: 300px;
+
+    &:hover{
+      width: 50%;
+    }
+    }
+
+    .hero{
+      height: auto;
+    width: 50%;
+    align-items: center;
+    justify-content: start;
+    gap: 37px;
+    text-align: center;
+
+      h3{
+      font-size: 20px;
+    }
+    .form-inputs{
+
+      input{
+        width: 100%;
+        padding-left: 0px;
+        font-size: 16px;
+        text-align: center;
+      }
+      
+    }
+    button{
+      height: 55px !important;
+      width: 60%;
+      padding: 0 5px;
+
+      span,.icon{
+        font-size: 20px;
+      }
+    }
+    }
+  }
+
+  @media (min-width: 1201px){
+.hero{
+  h3{
+    font-size: 25px;
+  }
+  .form-inputs{
+
+input{
+  width: 250px;
+  font-size: 20px;
+}
+
+}
+  button{
+    height: 60px;
+    span{
+      font-size: 25px;
+    }
+  }
+}
   }
 `

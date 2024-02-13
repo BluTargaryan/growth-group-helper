@@ -34,7 +34,7 @@ export default function Home() {
   </button>
   </div>
   <div className="hero-img">
-  <img src='https://images.unsplash.com/photo-1565813086292-604790c8a97b?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' alt='fellowship image'/>
+  <img src='https://images.unsplash.com/photo-1569292567777-e5d61a759322?q=80&w=1767&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'/>
   </div>
   
 </StyledMain>
@@ -86,6 +86,9 @@ const StyledMain = styled(motion.main)`
   height: 90%;
   overflow: hidden;
   transition: all.2s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   &:hover{
       width: 50%;
@@ -104,13 +107,17 @@ const StyledMain = styled(motion.main)`
   padding: 66px 0;
   height: auto;
   justify-content: center;
+  align-items: center;
   gap: 37px;
 
   .hero{
+    height: auto;
     width: 90%;
     align-items: center;
-    text-align: center;
+    justify-content: start;
     gap: 37px;
+    text-align: center;
+    
     h2{
       font-size: 25px;
      
@@ -119,7 +126,6 @@ const StyledMain = styled(motion.main)`
       font-size: 16px;
     }
     button{
-      
       height: 55px !important;
       width: 60%;
       padding: 0 5px;
@@ -131,7 +137,7 @@ const StyledMain = styled(motion.main)`
   }
 
   .hero-img{
-    width: 80%;
+    width: 85%;
     height: 284px;
 
     &:hover{
@@ -140,12 +146,22 @@ const StyledMain = styled(motion.main)`
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px){
-height: auto;
+@media (min-width: 577px) and (max-width: 768px){
+  flex-direction: column-reverse;
+  padding: 66px 0;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+  gap: 37px;
 
-.hero{
- justify-content: center;
- gap: 20px;
+  .hero{
+    height: auto;
+    width: 80%;
+    align-items: center;
+    justify-content: start;
+    gap: 37px;
+    text-align: center;
+    
     h2{
       font-size: 25px;
      
@@ -153,10 +169,10 @@ height: auto;
     p{
       font-size: 16px;
     }
-
     button{
-      
       height: 55px !important;
+      width: 60%;
+      padding: 0 5px;
 
       span,.icon{
         font-size: 20px;
@@ -165,7 +181,49 @@ height: auto;
   }
 
   .hero-img{
+    width: 65%;
     height: 400px;
+
+    &:hover{
+      width: 90%;
+    }
+
+    img{
+    height: auto;
+    width: 100%;
+  }
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px){
+
+
+  .hero{
+    justify-content: center;
+    gap: 32px;
+    h2{
+      font-size: 31px;
+    }
+
+    p{
+      font-size: 20px;
+    }
+    button{
+      height: 50px;
+
+      span,.icon{
+        font-size: 25px;
+      }
+    }
+  }
+
+  .hero-img{
+    height: 400px;
+
+    img{
+    height: 100%;
+    width: auto;
+  }
   }
 }
 ` 

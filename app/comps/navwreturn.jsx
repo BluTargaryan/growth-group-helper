@@ -80,4 +80,30 @@ z-index: 10;
         width: 50px;
     }
 }
+
+@media (max-width: 768px){
+    height:68px ;
+
+    .logo{
+        height: 45px;
+        width: 45px;
+
+        img{
+            width: 40px;
+        }
+    }
+
+    .returnToForm{
+        width: 106px;
+        height: 35px;
+
+        span, .icon{
+        font-size: 13px;
+    }
+
+        &:hover{
+        width: 95px;
+    }
+    }
+}
 `

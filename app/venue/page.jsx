@@ -56,8 +56,6 @@ const StyledVenue = styled(motion.main)`
     gap: 32px;
     width: 40%;
 
-  
-
     h4{
       font-size: 39px;
     }
@@ -79,4 +77,57 @@ const StyledVenue = styled(motion.main)`
     height: 90%;
   }
 
+  @media (max-width: 576px){
+    padding: 32px 0;
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 37px;
+
+    .hero{
+      height: auto;
+    width: 90%;
+    align-items: center;
+    gap: 37px;
+    text-align: center;
+
+    h4{
+      font-size: 25px;
+    }
+
+    p{
+      font-size: 20px;
+    }
+    }
+
+    .map-holder{
+      width: 85%;
+      height: 284px;
+    }
+  }
+
+  @media (min-width: 577px) and (max-width: 1200px){
+flex-direction: column-reverse;
+padding: 32px 0;
+gap: 32px;
+
+.hero{
+      height: auto;
+    width: 90%;
+    align-items: center;
+    gap: 37px;
+    text-align: center;
+
+    h4{
+      font-size: 25px;
+    }
+
+    p{
+      font-size: 20px;
+    }
+    }
+
+    .map-holder{
+    width: 90%;
+  }
+}
 `
