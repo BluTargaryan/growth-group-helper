@@ -7,11 +7,81 @@ import { pageAnimation } from "../animation";
 
 import MapContainer from "../comps/map";
 
-import { useRouter } from "next/navigation"
+
 import { NavRet } from "../comps/navwreturn";
 
-export default function Venue (){
+//geocode
+import {
+  setKey,
+  setDefaults,
+  setLanguage,
+  setRegion,
+  fromAddress,
+  fromLatLng,
+  fromPlaceId,
+  setLocationType,
+  geocode,
+  RequestType,
+} from "react-geocode";
+import { useState } from "react";
 
+export default function Venue (){
+  //coordinates object
+  const venueCoord = {
+    lat: 52.413975,
+    long: -1.498518
+  };
+
+  const [userCoord, setUserCoord]=useState({})
+
+
+  //func to conv degrees to radians
+  const toRadians = (degrees)=> {
+    return degrees * Math.PI / 180;
+}
+
+//haversine formula function to  calc dist btw two points
+ const haversineDistance=(lat1, lon1, lat2, lon2)=> {
+  // Radius of the Earth in kilometers
+  const R = 6371;
+
+  // Convert latitude and longitude from degrees to radians
+  const lat1Rad = toRadians(lat1);
+  const lon1Rad = toRadians(lon1);
+  const lat2Rad = toRadians(lat2);
+  const lon2Rad = toRadians(lon2);
+
+  // Differences in latitude and longitude
+  const dLat = lat2Rad - lat1Rad;
+  const dLon = lon2Rad - lon1Rad;
+
+  // Haversine formula
+  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+            Math.cos(lat1Rad) * Math.cos(lat2Rad) *
+            Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  const distance = R * c;
+
+  return distance;
+}
+
+
+
+///geocode 
+setKey(process.env.NEXT_PUBLIC_MAPS_API_KEY)
+fromAddress("CV1 1AJ")
+  .then(({ results }) => {
+    const { lat, lng } = results[0].geometry.location;
+   setUserCoord({
+    ...userCoord,
+      lat: lat,
+      long: lng
+    });
+  console.log(userCoord)
+  })
+
+//final value for the dist in km
+const distance = Math.round(haversineDistance(venueCoord.lat,venueCoord.long, userCoord.lat, userCoord.long));
   
  return (
   <motion.div
@@ -23,7 +93,7 @@ export default function Venue (){
    <NavRet/>
 <StyledVenue>
 <div className="hero">
-  <p>Dear <strong>Paul</strong>, the growth group closest to you is located at</p>
+  <p>Dear <strong>Paul</strong>, the growth group closest to you ({distance} km) is located at</p>
 <h4>31 Westfarrow Lane, CV2 1VF</h4>
 <p>Feel free to come fellowship with us every Thursday. Also, you can contact the growth group leaders by:</p>
 
@@ -34,7 +104,7 @@ export default function Venue (){
 </div>
 
 <div className="map-holder">
-<MapContainer/>
+<MapContainer lat={venueCoord.lat} long={venueCoord.long}/>
 </div>
 </StyledVenue>
    </motion.div>

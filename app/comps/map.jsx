@@ -12,12 +12,14 @@ const markerStyle = {
  fontSize: '39px',
 };
 
-const center = {
-  lat: 52.413975,
-  lng: -1.498518
-};
 
-function MapContainer() {
+
+function MapContainer({lat, long}) {
+  const center = {
+    lat: lat,
+    lng: long
+  };
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY
