@@ -66,20 +66,6 @@ export default function Venue (){
 }
 
 
-
-///geocode 
-setKey(process.env.NEXT_PUBLIC_MAPS_API_KEY)
-fromAddress("CV1 1AJ")
-  .then(({ results }) => {
-    const { lat, lng } = results[0].geometry.location;
-   setUserCoord({
-    ...userCoord,
-      lat: lat,
-      long: lng
-    });
-  console.log(userCoord)
-  })
-
 //final value for the dist in km
 const distance = Math.round(haversineDistance(venueCoord.lat,venueCoord.long, userCoord.lat, userCoord.long));
   
@@ -93,7 +79,7 @@ const distance = Math.round(haversineDistance(venueCoord.lat,venueCoord.long, us
    <NavRet/>
 <StyledVenue>
 <div className="hero">
-  <p>Dear <strong>Paul</strong>, the growth group closest to you ({distance} km) is located at</p>
+  <p>Dear <strong>Paul</strong>, the growth group closest to you (10 km) is located at</p>
 <h4>31 Westfarrow Lane, CV2 1VF</h4>
 <p>Feel free to come fellowship with us every Thursday. Also, you can contact the growth group leaders by:</p>
 
