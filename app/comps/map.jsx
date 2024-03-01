@@ -1,60 +1,24 @@
-import React from 'react'
-import { GoogleMap, useJsApiLoader , OverlayView} from '@react-google-maps/api';
-
-import { MdLocationPin } from "react-icons/md";
-
-const containerStyle = {
-  width: '100%',
-  height: '100%'
-};
-
-const markerStyle = {
- fontSize: '39px',
-};
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet';
 
 
+const icon = L.icon({ iconUrl: "/marker-icon.png" });
 
-function MapContainer({lat, long}) {
-  const center = {
-    lat: lat,
-    lng: long
-  };
-
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: process.env.NEXT_PUBLIC_MAPS_API_KEY
-  })
-
-  const [map, setMap] = React.useState(null)
-
-  const onLoad = React.useCallback(function callback(map) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
-  return isLoaded ? (
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={10}
-        onLoad={onLoad}
-        onUnmount={onUnmount}
-      >
-       <OverlayView
-      position={center}
-      mapPaneName={OverlayView.OVERLAY_MOUSE_TARGET}
-    >
-      <MdLocationPin style={markerStyle}/>
-    </OverlayView>
-      </GoogleMap>
-  ) : <></>
+const Map = () => {
+  return (
+    <MapContainer center={[52.413975, -1.498518]} zoom={20} scrollWheelZoom={false} style={{height: "100%", width: "100%"}}>
+       <TileLayer
+      attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+    />
+      <Marker position={[52.413975, -1.498518]} icon={icon}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
+  )
 }
 
-export default React.memo(MapContainer)
+export default Map

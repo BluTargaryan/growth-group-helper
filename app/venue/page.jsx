@@ -5,69 +5,17 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pageAnimation } from "../animation";
 
-import MapContainer from "../comps/map";
+import Map from "../comps/map";
 
 
 import { NavRet } from "../comps/navwreturn";
 
-//geocode
-import {
-  setKey,
-  setDefaults,
-  setLanguage,
-  setRegion,
-  fromAddress,
-  fromLatLng,
-  fromPlaceId,
-  setLocationType,
-  geocode,
-  RequestType,
-} from "react-geocode";
+
 import { useState } from "react";
 
 export default function Venue (){
-  //coordinates object
-  const venueCoord = {
-    lat: 52.413975,
-    long: -1.498518
-  };
 
-  const [userCoord, setUserCoord]=useState({})
-
-
-  //func to conv degrees to radians
-  const toRadians = (degrees)=> {
-    return degrees * Math.PI / 180;
-}
-
-//haversine formula function to  calc dist btw two points
- const haversineDistance=(lat1, lon1, lat2, lon2)=> {
-  // Radius of the Earth in kilometers
-  const R = 6371;
-
-  // Convert latitude and longitude from degrees to radians
-  const lat1Rad = toRadians(lat1);
-  const lon1Rad = toRadians(lon1);
-  const lat2Rad = toRadians(lat2);
-  const lon2Rad = toRadians(lon2);
-
-  // Differences in latitude and longitude
-  const dLat = lat2Rad - lat1Rad;
-  const dLon = lon2Rad - lon1Rad;
-
-  // Haversine formula
-  const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-            Math.cos(lat1Rad) * Math.cos(lat2Rad) *
-            Math.sin(dLon / 2) * Math.sin(dLon / 2);
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  const distance = R * c;
-
-  return distance;
-}
-
-
-//final value for the dist in km
-const distance = Math.round(haversineDistance(venueCoord.lat,venueCoord.long, userCoord.lat, userCoord.long));
+  
   
  return (
   <motion.div
@@ -90,7 +38,7 @@ const distance = Math.round(haversineDistance(venueCoord.lat,venueCoord.long, us
 </div>
 
 <div className="map-holder">
-<MapContainer lat={venueCoord.lat} long={venueCoord.long}/>
+<Map/>
 </div>
 </StyledVenue>
    </motion.div>
@@ -131,6 +79,7 @@ const StyledVenue = styled(motion.main)`
   .map-holder{
     width: 50%;
     height: 90%;
+    background-color: red;
   }
 
   @media (max-width: 576px){
