@@ -4,6 +4,7 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pageAnimation } from "../animation";
+import dynamic from 'next/dynamic'
 
 const Map = dynamic(() => import("../comps/map"), { ssr: false });
 
