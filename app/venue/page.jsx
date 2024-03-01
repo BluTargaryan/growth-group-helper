@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 import { pageAnimation } from "../animation";
 
-import Map from "../comps/map";
+const Map = dynamic(() => import("../comps/map"), { ssr: false });
 
 
 import { NavRet } from "../comps/navwreturn";
